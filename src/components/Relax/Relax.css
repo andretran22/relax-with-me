@@ -1,0 +1,12 @@
+.contain{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stuff{
+    box-shadow: 0px 10px 20px 2px #cfcfcf;
+    background-color: tomato;
+    width: 10vw;
+}

@@ -1,16 +1,18 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   defaultVariant,
   defualtTransition,
   styleAbsolute,
-} from "../FramerContants";
+} from "../../FramerContants";
 
-import "./Home.css";
+import "./SongMenu.css";
 
-const Home = () => {
+const SongMenu = () => {
   return (
     <motion.div
       style={styleAbsolute}
@@ -20,13 +22,15 @@ const Home = () => {
       variants={defaultVariant}
       transition={defualtTransition}
     >
-      <Container className="center-page">
-      <Row>
-        <h1>Home</h1>
-      </Row>
+      <Container className="song-menu">
+        <Row>
+          <Button variant="link" as={NavLink} to="/relax">
+            Go Back
+          </Button>
+        </Row>
       </Container>
     </motion.div>
   );
 };
 
-export default Home;
+export default SongMenu;

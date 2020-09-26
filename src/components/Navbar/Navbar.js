@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import NavLink from "react-router-dom/NavLink";
+import { NavLink} from "react-router-dom";
 import "./Navbar.css";
 
 const Toolbar = () => {
-  return (
-    <Navbar bg="light" expand="lg">
+  return  (
+    <Navbar className="toolbar" fixed="top" bg="light" expand="sm">
       <Navbar.Brand  as={NavLink} to="/">Relax With Me</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
