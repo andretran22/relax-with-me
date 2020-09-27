@@ -10,7 +10,7 @@ import {
   styleAbsolute,
 } from "../FramerContants";
 
-// import testSong from process.env.PUBLIC_URL + "";
+import testSong from "../../assets/testSong.mp3";
 
 import "./Relax.css";
 
@@ -39,7 +39,7 @@ const Relax = () => {
         <Row>
           <Button onClick={playAudio}>Play Selected Song</Button>
           <audio className="audio-element">
-            <source src={process.env.PUBLIC_URL + "/testSong.mp3"}></source>
+            <source src={testSong}></source>
           </audio>
         </Row>
       </Container>
