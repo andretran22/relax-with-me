@@ -1,5 +1,3 @@
-// import { AnimatePresence, motion } from "framer-motion";
-
 export const defaultVariant = {
   initial: {
     opacity: 0,
