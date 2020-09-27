@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.full-height {
+  height: 100%;
+}
+
+.main-page{
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
