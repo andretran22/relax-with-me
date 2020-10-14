@@ -10,13 +10,18 @@ import {
   styleAbsolute,
 } from "../FramerContants";
 
-import testSong from "../../assets/testSong.mp3";
+// import testSong from "../../assets/testSong.mp3";
+import song1 from "../../assets/Apples/jazz.mp3";
+import song2 from "../../assets/Jazz/dogtective.mp3";
 
 import "./Relax.css";
 
 const playAudio = () => {
-  const audioEl = document.getElementsByClassName("audio-element")[0];
-  audioEl.play();
+  let a1 = new Audio(song1);
+  let a2 = new Audio(song2);
+
+  a1.play();
+  a2.play();
 };
 
 const Relax = () => {
@@ -35,13 +40,13 @@ const Relax = () => {
             Song Menu
           </Button>
         </Row>
-        <br />
+        <br/>
         <Row>
-          <Button onClick={playAudio}>Play Selected Song</Button>
-          <audio className="audio-element">
-            <source src={testSong}></source>
-          </audio>
+          <Button onClick={playAudio} >
+            Play sounds
+          </Button>
         </Row>
+        <br />
       </Container>
     </motion.div>
   );

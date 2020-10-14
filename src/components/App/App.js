@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import Home from "../Home/Home";
 import Relax from "../Relax/Relax";
 import About from "../About/About";
-import SongMenu from "../Relax/SongMenu/SongMenu";
+import SongMenu from "../SongMenu/SongMenu";
 import Toolbar from "../Navbar/Navbar";
 import "./App.css";
 
