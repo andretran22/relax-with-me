@@ -1,22 +1,44 @@
 import React, { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+import "./SongMenu.css";
+
+//boostrap
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { NavLink } from "react-router-dom";
+
+//animation
 import { motion } from "framer-motion";
 import {
   defaultVariant,
   defualtTransition,
   styleAbsolute,
 } from "../FramerContants";
-import "./SongMenu.css";
 
-//abums
-import Apples from "../Albums/Apples";
-// import Jazz from "../Albums/Jazz";
+//playlists
+import PlaylistCard from "../PlaylistCard/PlaylistCard";
+import chillaxData from "../Playlists/Chillax";
+import dreamsData from "../Playlists/Dreams";
+
+const playlistLibrary = {
+  "Chillax": chillaxData,
+  "Dreams": dreamsData,
+};
 
 const SongMenu = () => {
-  // const [currentAlbum, setAlbum] = useState([]);
+
+  const [selectedPlaylist, setPlaylist] = useState([]);
+
+  // const selectPlaylist = (playlistName) => {
+  //   console.log(playlistName);
+    
+  // };
+
+  const makePlaylistCards = (library) => {
+    return Object.entries(library).map(([key], index) => (
+      <PlaylistCard selectPlaylist={setPlaylist} title={key} key={index}/>
+    ));
+  };
 
   return (
     <motion.div
@@ -28,15 +50,19 @@ const SongMenu = () => {
       transition={defualtTransition}
     >
       <Container className="song-menu">
-        <Row>
-          <Button variant="link" as={NavLink} to="/relax">
-            Go Back
-          </Button>
-          <br />
-          {/* <Button onClick={setAlbum(Apples)}>Apples</Button> */}
-          <br />
-          {/* <Button onClick={setAlbum(Jazz)}>Jazz</Button> */}
-        </Row>
+        <Link to={{
+          pathname: "/relax",
+          state:{
+            playlist: playlistLibrary[selectedPlaylist]
+          }
+        }}> Go Back
+        </Link>
+        {/* <Button variant="link" as={NavLink} to="/relax">
+          Go Back
+        </Button> */}
+
+        <Row>{makePlaylistCards(playlistLibrary)}</Row>
+        <Row>Sounds to layer</Row>
       </Container>
     </motion.div>
   );

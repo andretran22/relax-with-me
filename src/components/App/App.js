@@ -11,26 +11,24 @@ import "./App.css";
 function App() {
   let location = useLocation();
   let key = location.pathname;
-  let hideToolBar = key === "/relax/song-menu";
+  let hideToolBar = key === "/song-menu";
 
   return (
     <div className="full-height">
-
       {/* Toolbar */}
-      {hideToolBar ? null : <Toolbar/>}
+      {hideToolBar ? null : <Toolbar />}
 
       {/* pages/routes */}
       <main className="main-page">
-      <AnimatePresence >
-        <Switch location={location} key={key}>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/relax" component={Relax} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/relax/song-menu" component={SongMenu} />
-        </Switch>
-      </AnimatePresence>
+          <AnimatePresence>
+            <Switch location={location} key={key}>
+              <Route exact path="/" component={Home} />
+              <Route path="/relax" component={Relax} />
+              <Route path="/about" component={About} />
+              <Route path="/song-menu" component={SongMenu} />
+            </Switch>
+          </AnimatePresence>
       </main>
-    
     </div>
   );
 }
