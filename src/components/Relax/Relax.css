@@ -11,3 +11,14 @@
     background-color: tomato;
     width: 10vw;
 }
+
+
+
+.my-modal .modal-dialog{
+    width: 95%;
+    max-width: none;
+}
+
+.my-modal .modal-content{
+    border-radius: .8rem;
+}

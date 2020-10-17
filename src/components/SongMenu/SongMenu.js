@@ -41,30 +41,30 @@ const SongMenu = () => {
   };
 
   return (
-    <motion.div
-      style={styleAbsolute}
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={defaultVariant}
-      transition={defualtTransition}
-    >
+    // <motion.div
+    //   style={styleAbsolute}
+    //   initial="initial"
+    //   animate="in"
+    //   exit="out"
+    //   variants={defaultVariant}
+    //   transition={defualtTransition}
+    // >
       <Container className="song-menu">
-        <Link to={{
+        {/* <Link to={{
           pathname: "/relax",
           state:{
             playlist: playlistLibrary[selectedPlaylist]
           }
         }}> Go Back
-        </Link>
-        {/* <Button variant="link" as={NavLink} to="/relax">
+        </Link> */}
+        <Button variant="link" >
           Go Back
-        </Button> */}
+        </Button>
 
         <Row>{makePlaylistCards(playlistLibrary)}</Row>
         <Row>Sounds to layer</Row>
       </Container>
-    </motion.div>
+    // </motion.div>
   );
 };
 
