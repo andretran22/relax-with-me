@@ -4,3 +4,12 @@
   flex-direction: column;
   justify-content: space-around;
 }
+.playlists-row{
+  padding: 1.5rem;
+}
+
+.playlists-group{
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+

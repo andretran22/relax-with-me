@@ -2,69 +2,76 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./SongMenu.css";
 
-//boostrap
+// Boostrap
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-//animation
-import { motion } from "framer-motion";
-import {
-  defaultVariant,
-  defualtTransition,
-  styleAbsolute,
-} from "../FramerContants";
-
-//playlists
+// Playlists
 import PlaylistCard from "../PlaylistCard/PlaylistCard";
 import chillaxData from "../Playlists/Chillax";
 import dreamsData from "../Playlists/Dreams";
+
+// Sounds 
+import SoundCard from "../SoundCard/SoundCard";
+import rainSound from "../../assets/Sounds/rain.mp3";
+import fireSound from "../../assets/Sounds/fireplace.mp3";
 
 const playlistLibrary = {
   "Chillax": chillaxData,
   "Dreams": dreamsData,
 };
 
-const SongMenu = () => {
+const soundLibrary = {
+  "Rain": rainSound,
+  "Fire": fireSound,
+};
 
-  const [selectedPlaylist, setPlaylist] = useState([]);
-
-  // const selectPlaylist = (playlistName) => {
-  //   console.log(playlistName);
-    
-  // };
+const SongMenu = (props) => {
 
   const makePlaylistCards = (library) => {
-    return Object.entries(library).map(([key], index) => (
-      <PlaylistCard selectPlaylist={setPlaylist} title={key} key={index}/>
+    return Object.entries(library).map(([key, value], index) => (
+      <PlaylistCard
+        title={key}
+        songs={value}
+        key={index}
+        setPlaylist={props.handleSetPlaylist}
+      />
+    ));
+  };
+
+  const makeSoundCards = (library) => {
+    let soundState = props.currentSoundState;
+
+    return Object.entries(library).map(([key, value], index) => (
+      <SoundCard
+        title={key}
+        sound={value}
+        key={index}
+        handlePlay={props.genericPlay}
+        handleVolume={props.genericVolume}
+        playState={soundState[key]["play"]}
+        volumeState={soundState[key]["volume"]}
+      />
     ));
   };
 
   return (
-    // <motion.div
-    //   style={styleAbsolute}
-    //   initial="initial"
-    //   animate="in"
-    //   exit="out"
-    //   variants={defaultVariant}
-    //   transition={defualtTransition}
-    // >
-      <Container className="song-menu">
-        {/* <Link to={{
-          pathname: "/relax",
-          state:{
-            playlist: playlistLibrary[selectedPlaylist]
-          }
-        }}> Go Back
-        </Link> */}
-        <Button variant="link" >
-          Go Back
-        </Button>
+    <Container className="song-menu">
+      {/* Playlists */}
+      <Row className="playlists-group">
+        <h3>Pick A Playlist</h3>
+        <Row className="playlists-row">{makePlaylistCards(playlistLibrary)}</Row>
+      </Row>
 
-        <Row>{makePlaylistCards(playlistLibrary)}</Row>
-        <Row>Sounds to layer</Row>
-      </Container>
-    // </motion.div>
+      {/* Sounds */}
+      <Row className="playlists-group">
+        <h3>Select Sounds</h3>
+        <Row className="playlists-row">{makeSoundCards(soundLibrary)}</Row>
+      </Row>
+
+      <br />
+    </Container>
   );
 };
 
