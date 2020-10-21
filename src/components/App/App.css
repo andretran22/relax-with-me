@@ -4,11 +4,13 @@
 
 .main-page{
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   position: relative;
   display: flex;
   justify-content: center;
-  height: calc(100vh - 100px - 60px);
+  /* height: calc(100vh - 100px - 60px); */
+  /* height: 100vh; */
+  /* height: 100%; */
   align-items: center;
 }
 
@@ -29,18 +31,19 @@
 }
 
 /* width */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px;
-}
+} */
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   background-color: rgb(224, 224, 224);
   border-radius: 10px;
-}
+} */
 
 /* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(170, 170, 170);
+/* ::-webkit-scrollbar-thumb {
+  background: rgb(88, 88, 88);
   border-radius: 10px;
-}
+} */
+

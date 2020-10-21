@@ -15,11 +15,6 @@ const SoundCard = (props) => {
   let soundImport = soundDict["import"];
   let key = props.index;
 
-
-  useEffect(() => {
-    console.log("mount");
-  });
-
   useEffect(() => {
     setPlay(props.playing);
   }, [props.playing]);
@@ -27,8 +22,6 @@ const SoundCard = (props) => {
   useEffect(() => {
     setVolume(props.volume);
   }, [props.volume]);
-
-
 
   // toggle play/pause
   const handlePlayPause = () => {

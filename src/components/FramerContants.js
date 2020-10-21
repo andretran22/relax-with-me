@@ -18,9 +18,9 @@ export const defaultVariant = {
 
 export const defualtTransition = {
   // transition: "linear",
-  // type: "spring",
+  type: "spring",
   // stiffness: 100,
-  type: "tween",
+  // type: "tween",
   ease: "anticipate",
   duration: 1,
 };
@@ -32,6 +32,6 @@ export const styleAbsolute = {
   flexDirection: "column",
   alignItems: "center",
   // height: "100vh",
-  height: "100%",
+  // height: "100%",
   width: "100vw"
 }

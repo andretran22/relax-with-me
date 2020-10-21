@@ -1,9 +1,13 @@
 .contain{
     height: 100vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    /* margin-right: 10vw;
+    margin-left: 10vw;
+    padding-left: 15px;
+    padding-right: 15px; */
+    /* flex-direction: column; */
 }
 
 .stuff{
@@ -12,30 +16,43 @@
     width: 10vw;
 }
 
-.my-modal .modal-dialog{
-    width: 95%;
-    max-width: none;
-}
-
-.my-modal .modal-content{
-    border-radius: .8rem;
-}
-
 .hide-player{
     height: 0;
     width: 0;
 }
 
-.seek-and-volume {
-    width: 50vw;
-}
-
-
-.new-song-menu{
-    height:100vh;
-}
-
 .main-body-container{
-    height: 100%;
-    /* overflow-y: scroll; */
+    /* margin-top: 60px; */
+    /* height: 100%; */
+    /* width: 100%; */
+    /* overflow-y: hidden; */
+}
+
+.scroll-button{
+    font-size: small;
+    position: fixed;
+    right: 20px;
+    bottom: 115px;
+}
+
+.parallax-placeholder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vw;
+    width:  30vw;
+    border-radius: 50%;
+    background-color: rgb(202, 202, 202);
+}
+
+.relax-cont{
+    /* margin: 0px;
+    padding: 0;
+     */
+}
+
+.center-parallax{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

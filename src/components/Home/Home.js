@@ -12,20 +12,20 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <motion.div
-      style={styleAbsolute}
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={defaultVariant}
-      transition={defualtTransition}
-    >
+    // <motion.div
+    //   style={styleAbsolute}
+    //   initial="initial"
+    //   animate="in"
+    //   exit="out"
+    //   variants={defaultVariant}
+    //   transition={defualtTransition}
+    // >
       <Container className="center-page">
       <Row>
         <h1>Home</h1>
       </Row>
       </Container>
-    </motion.div>
+    // </motion.div>
   );
 };
 
