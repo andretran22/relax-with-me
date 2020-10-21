@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 const Toolbar = () => {
   return  (
-    <Navbar className="toolbar" fixed="top" bg="light" expand="sm">
+    <Navbar className="toolbar" sticky="top" bg="light" expand="sm">
       <Navbar.Brand  as={NavLink} to="/">Relax With Me</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

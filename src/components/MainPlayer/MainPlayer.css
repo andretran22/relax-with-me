@@ -1,0 +1,10 @@
+.media-controls{
+    flex-direction: column;
+    align-items: center;
+}
+
+.play-pause-button{
+    /* align-items: center; */
+    height: 30px;
+    font-size: small;
+}

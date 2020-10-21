@@ -29,7 +29,9 @@ export const styleAbsolute = {
   position: "absolute",
   display: "flex",
   justifyContent: "center",
+  flexDirection: "column",
   alignItems: "center",
-  height: "100vh",
+  // height: "100vh",
+  height: "100%",
   width: "100vw"
 }

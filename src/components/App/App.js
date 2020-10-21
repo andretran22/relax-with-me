@@ -1,17 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Row from "react-bootstrap/Row";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+
+//Players
+import MainPlayer from "../MainPlayer/MainPlayer";
+import SoundPlayer from "../MainPlayer/MainSoundPlayers";
+
+// Page components
 import Home from "../Home/Home";
 import Relax from "../Relax/Relax";
 import About from "../About/About";
-import SongMenu from "../SongMenu/SongMenu";
 import Toolbar from "../Navbar/Navbar";
 import "./App.css";
 
+import sounds from "../Sounds/Sounds";
+
 function App() {
+  const [playlist, setPlaylist] = useState(null);
+  const [soundStates, setSoundStates] = useState([]);
+  const [flip, setFlip] = useState(false);
+
   let location = useLocation();
   let key = location.pathname;
   let hideToolBar = key === "/song-menu";
+
+  useEffect(() => {
+    let initialSoundStates = sounds.map((soundDict) => {
+      let soundImport = require("../../assets/Sounds/" +
+        soundDict["pathSuffix"]);
+      let state = {
+        name: soundDict["name"],
+        playing: false,
+        volume: 0.5,
+        import: soundImport,
+      };
+      return state;
+    });
+    setSoundStates(initialSoundStates);
+  }, []);
+
+  // handler for sound card state changes
+  const handleChangeState = (key, newDict) => {
+    let copy = soundStates;
+    copy[key] = newDict;
+    setSoundStates(copy);
+    setFlip(!flip);
+  };
 
   return (
     <div className="full-height">
@@ -20,15 +55,37 @@ function App() {
 
       {/* pages/routes */}
       <main className="main-page">
-          <AnimatePresence>
-            <Switch location={location} key={key}>
-              <Route exact path="/" component={Home} />
-              <Route path="/relax" component={Relax} />
-              <Route path="/about" component={About} />
-              <Route path="/song-menu" component={SongMenu} />
-            </Switch>
-          </AnimatePresence>
+        <AnimatePresence>
+          <Switch location={location} key={key}>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route
+              path="/relax"
+              render={(props) => (
+                <Relax
+                  {...props}
+                  // flip={flip}
+                  setPlaylist={setPlaylist}
+                  soundStates={soundStates}
+                  handleChangeState={handleChangeState}
+                />
+              )}
+            />
+          </Switch>
+        </AnimatePresence>
       </main>
+
+      {/* footer with main media player */}
+      <Row className="main-playlist-player">
+        <MainPlayer playlistSongs={playlist} />
+      </Row>
+
+      {/* create media players for every sound */}
+      <Row>
+        {soundStates.map((soundStateDict, index) => (
+            <SoundPlayer key={index} flip={flip} soundStateDict={soundStateDict}/>
+        ))}
+      </Row>
     </div>
   );
 }
