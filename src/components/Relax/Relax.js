@@ -19,6 +19,7 @@ import {
 
 //song menu
 import SongMenu from "../../components/SongMenu/SongMenu";
+import MyParallax from "./MyParallax";
 
 const Relax = (props) => {
 
@@ -45,9 +46,10 @@ const Relax = (props) => {
 
           {/* parallax */}
           <Col xs={6} className="center-parallax">
-            <div className="parallax-placeholder">
-              <h1 className="text-center">Parallax Placeholder</h1>
-            </div>
+            {/* <div className="parallax-placeholder"> */}
+              <MyParallax />
+              {/* <h1 className="text-center">Parallax Placeholder</h1> */}
+            {/* </div> */}
           </Col>
 
           {/* song menu button  */}

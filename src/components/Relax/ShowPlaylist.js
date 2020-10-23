@@ -53,7 +53,6 @@ const ShowPlaylist = (props) => {
           <h2>{title == null ? "" : title}</h2>
         </Row>
       )}
-
       <Row>{playlist == null ? null : constructListGroup()}</Row>
     </Col>
   );
