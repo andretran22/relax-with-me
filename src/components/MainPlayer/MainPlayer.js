@@ -3,8 +3,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Player from "react-player";
+import Duration from "./Duration";
 import "./MainPlayer.css";
-import { Container } from "react-bootstrap";
 
 const MainPlayer = (props) => {
   const [playlist, setPlaylist] = useState([]);
@@ -12,25 +12,30 @@ const MainPlayer = (props) => {
   const [songIndex, setSongIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [played, setPlayed] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.5);
   const [seek, setSeek] = useState(false);
   const ref = useRef(null);
 
   // when we notice new songs passed in, set to playlist
   useEffect(() => {
-    console.log("here")
     if (props.playlistSongs != null) {
       setPlaylist(props.playlistSongs);
       setPlaylistData(props.playlist);
       setPlaying(true);
       setSongIndex(0);
-      
     }
   }, [props.playlistSongs, props.playlist]);
 
-  useEffect(()=>{
-    console.log("mount")
-  })
+  //listen for selected song index
+  useEffect(() => {
+    let number = parseInt(props.songIndex);
+    setSongIndex(number);
+  }, [props.songIndex]);
+
+  useEffect(() => {
+    props.highlightSong(songIndex);
+  }, [songIndex]);
 
   const handlePlayPause = () => {
     setPlaying(!playing);
@@ -38,6 +43,7 @@ const MainPlayer = (props) => {
 
   const handleNextSong = () => {
     let nextIndex = songIndex + 1 >= playlist.length ? 0 : songIndex + 1;
+    console.log(songIndex);
     setSongIndex(nextIndex);
   };
 
@@ -70,8 +76,15 @@ const MainPlayer = (props) => {
     }
   };
 
+  const handleDuration = (duration) => {
+    console.log("onDuration", duration);
+    setDuration(duration);
+  };
+
   const handleSongEnded = () => {
     let nextIndex = songIndex + 1;
+    console.log("cur: " + songIndex);
+    console.log("next: " + nextIndex);
     if (nextIndex >= playlist.length) {
       nextIndex = 0;
     }
@@ -79,35 +92,49 @@ const MainPlayer = (props) => {
   };
 
   const getSongName = () => {
-    if (playlistData == null ) {
+    if (playlistData == null) {
       return null;
     }
     let currentSong = playlistData["default"][songIndex];
     return (
-      <Col xs={3} className="playing-song-info">
-        <h4>{currentSong["title"]}</h4>
+      <>
+        <h5>{currentSong["title"]}</h5>
         <p className="m-0">{currentSong["album"]}</p>
-      </Col>
+      </>
+    );
+  };
+
+  // main media player
+  const getMainPlayer = () => {
+    return (
+      <Player
+        ref={ref}
+        width="0"
+        height="0"
+        playing={playing}
+        volume={volume}
+        url={playlist[songIndex]}
+        onProgress={handleProgress}
+        onEnded={handleSongEnded}
+        onDuration={handleDuration}
+        onSeek={(e) => console.log("onSeek", e)}
+      />
     );
   };
 
   return (
-    <Row>
-      {getSongName()}
-      <Col className="media-controls">
-        <Player
-          ref={ref}
-          width="0"
-          height="0"
-          playing={playing}
-          volume={volume}
-          url={playlist[songIndex]}
-          onProgress={handleProgress}
-          onEnded={handleSongEnded}
-          onSeek={(e) => console.log("onSeek", e)}
-        />
+    <Row className="media-player">
+      {/* main player */}
+      {getMainPlayer()}
 
-        <Row className="play-pause">
+      {/* song name */}
+      <Col xs={3} className="flex-col">
+        {getSongName()}
+      </Col>
+
+      {/* media controls */}
+      <Col xs={6} className="media-control-columns">
+        <Row className="media-controls">
           <Button
             className="media-button"
             variant="dark"
@@ -130,10 +157,11 @@ const MainPlayer = (props) => {
             Next
           </Button>
         </Row>
-
-        {/* seek */}
-        <Row className="seek-and-volume">
-          <Col xs={9}>
+        <Row className="center-cols">
+          <Col xs={1} className="center-cols">
+            <Duration seconds={duration * played} />
+          </Col>
+          <Col className="center-cols">
             <input
               className="slider"
               type="range"
@@ -146,20 +174,23 @@ const MainPlayer = (props) => {
               onMouseDown={handleSeekMouseDown}
             />
           </Col>
-
-          {/* volume */}
-          <Col xs={3}>
-            <input
-              className="slider"
-              type="range"
-              min={0}
-              max={1}
-              step="any"
-              value={volume}
-              onChange={handleVolumeChange}
-            />
+          <Col xs={1} className="center-cols">
+            <Duration seconds={duration} />
           </Col>
         </Row>
+      </Col>
+
+      {/* volume */}
+      <Col xs={2} className="center-cols volume-slider">
+        <input
+          className="slider"
+          type="range"
+          min={0}
+          max={1}
+          step="any"
+          value={volume}
+          onChange={handleVolumeChange}
+        />
       </Col>
     </Row>
   );

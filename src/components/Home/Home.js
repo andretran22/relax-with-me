@@ -25,7 +25,7 @@ const Home = () => {
         <h1>Home</h1>
       </Row>
       </Container>
-    // </motion.div>
+    //  </motion.div>
   );
 };
 

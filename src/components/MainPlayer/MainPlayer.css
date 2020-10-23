@@ -1,7 +1,12 @@
 .media-controls{
-    flex-direction: column;
-    align-items: center;
-    width: 65vw;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.media-player{
+    width: 80%;
 }
 
 .media-button{
@@ -12,10 +17,22 @@
     margin-left: 5px;
 }
 
-.seek-and-volume {
-    /* width: 65vw; */
+.play-pause{
+    justify-content: center;
 }
 
-.play-pause{
+.volume-slider{
+    padding: 2rem;
+}
+
+.center-cols{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }

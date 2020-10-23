@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import { Router, Switch, Route, useLocation } from "react-router-dom";
 import history from "./history";
-// import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 //Players
 import MainPlayer from "../MainPlayer/MainPlayer";
@@ -22,6 +22,8 @@ function App() {
   const [playlistData, setPlaylistData] = useState(null);
   const [playlistTitle, setPlaylistTitle] = useState(null);
   const [soundStates, setSoundStates] = useState([]);
+  const [songIndex, setSongIndex] = useState(0);
+  const [highlight, setHighlight] = useState(0);
   const [flip, setFlip] = useState(false);
 
   let location = useLocation();
@@ -56,6 +58,11 @@ function App() {
     setPlaylist(songImports);
     setPlaylistData(songsData);
     setPlaylistTitle(title);
+  };
+
+  const highlightSong = (h) => {
+    console.log(h)
+    setHighlight(h)
   }
 
   return (
@@ -65,36 +72,41 @@ function App() {
 
       {/* pages/routes */}
       {/* <main className="main-page"> */}
-        {/* <AnimatePresence> */}
-        <Router history={history}>
-          <Switch location={location} key={key}>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route
-              path="/relax"
-              render={(props) => (
-                <Relax
-                  {...props}
-                  setPlaylist={handleSetPlaylist}
-                  soundStates={soundStates}
-                  playlist={playlistData}
-                  title={playlistTitle}
-                  handleChangeState={handleChangeState}
-                />
-              )}
-            />
-          </Switch>
-        </Router>
-        {/* </AnimatePresence> */}
+      {/* <AnimatePresence> */}
+        <Switch location={location} key={key}>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route
+            path="/relax"
+            render={(props) => (
+              <Relax
+                {...props}
+                setPlaylist={handleSetPlaylist}
+                soundStates={soundStates}
+                playlist={playlistData}
+                title={playlistTitle}
+                handleChangeState={handleChangeState}
+                chooseSong={setSongIndex}
+                highlightSong={highlight}
+              />
+            )}
+          />
+        </Switch>
+      {/* </AnimatePresence> */}
       {/* </main> */}
 
       {/* footer with main media player */}
       <Row className="main-playlist-player">
-        <MainPlayer playlistSongs={playlist} playlist={playlistData}/>
+        <MainPlayer
+          playlistSongs={playlist}
+          playlist={playlistData}
+          songIndex={songIndex}
+          highlightSong={highlightSong}
+        />
       </Row>
 
       {/* create media players for every sound */}
-      <Row>
+      <>
         {soundStates.map((soundStateDict, index) => (
           <SoundPlayer
             key={index}
@@ -102,7 +114,7 @@ function App() {
             soundStateDict={soundStateDict}
           />
         ))}
-      </Row>
+      </>
     </div>
   );
 }

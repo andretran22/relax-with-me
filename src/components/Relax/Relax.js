@@ -9,13 +9,13 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Playlist from "./ShowPlaylist";
 
-//animate
-// import { motion } from "framer-motion";
-// import {
-//   defaultVariant,
-//   defualtTransition,
-//   styleAbsolute,
-// } from "../FramerContants";
+// animate
+import { motion } from "framer-motion";
+import {
+  defaultVariant,
+  defualtTransition,
+  styleAbsolute,
+} from "../FramerContants";
 
 //song menu
 import SongMenu from "../../components/SongMenu/SongMenu";
@@ -45,9 +45,13 @@ const Relax = (props) => {
 
     <Container className="relax-cont">
       <Row id="top" className="contain">
-
         {/* playlist info */}
-        <Playlist playlist={props.playlist} title={props.title}/>
+        <Playlist
+          playlist={props.playlist}
+          title={props.title}
+          chooseSong={props.chooseSong}
+          highlightSong={props.highlightSong}
+        />
 
         {/* parallax */}
         <Col xs={6} className="center-parallax">
@@ -74,7 +78,7 @@ const Relax = (props) => {
         />
       </Row>
     </Container>
-    //  </motion.div>
+      // </motion.div>
   );
 };
 

@@ -1,7 +1,48 @@
-.playlist-display{
-    /* height: 45%; */
+.list-group-flush>.list-group-item:last-child{
+    border-bottom-width: 1px;
 }
+
 
 .playlist-display-title{
     border-bottom: 2px solid black;
+}
+
+.highlightSong{
+    /* outline: 5px auto -webkit-focus-ring-color; */
+    border-bottom: 2px solid black;
+    z-index: 1;
+    /* color: #d42c2c; */
+    text-decoration: none;
+    /* background-color: #f8f9fa; */
+}
+
+/* .highlightSong:focus, .highlightSong:active{
+    outline: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    color: #d42c2c;
+    z-index: 0;
+} */
+
+.list-group-item-action:focus{
+    outline: 0px;
+    background-color: #e9ecef00;
+    /* color: #d42c2c; */
+
+
+}
+
+.list-group-item-action:active {
+    color: #212529;
+    background-color: #e9ecef00;
+}
+
+.media-control-columns{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.media-and-volume{
+    flex-direction: row;
+    display: flex;
 }

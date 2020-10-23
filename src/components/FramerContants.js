@@ -1,7 +1,7 @@
 export const defaultVariant = {
   initial: {
     opacity: 0,
-    x: "-100vw",
+    x: "-100%",
     scale: 0.8,
   },
   in: {
@@ -11,26 +11,26 @@ export const defaultVariant = {
   },
   out: {
     opacity: 0,
-    x: "100vw",
+    x: "100%",
     scale: 1,
   },
 };
 
 export const defualtTransition = {
   // transition: "linear",
-  type: "spring",
+  // type: "spring",
   // stiffness: 100,
-  // type: "tween",
+  type: "tween",
   ease: "anticipate",
   duration: 1,
 };
 
 export const styleAbsolute = {
   position: "absolute",
-  display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
-  alignItems: "center",
+  // display: "flex",
+  
+  // justifyContent: "center",
+  // flexDirection: "column",
   // height: "100vh",
   // height: "100%",
   width: "100vw"
