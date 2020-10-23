@@ -1,77 +1,91 @@
-.contain{
-    height: 100vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.contain {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.stuff{
-    box-shadow: 0px 10px 20px 2px #cfcfcf;
-    background-color: tomato;
-    width: 10vw;
+.stuff {
+  box-shadow: 0px 10px 20px 2px #cfcfcf;
+  background-color: tomato;
+  width: 10vw;
 }
 
-.hide-player{
-    height: 0;
-    width: 0;
+.hide-player {
+  height: 0;
+  width: 0;
 }
 
-
-.scroll-arrow-button{
-    /* size: 25px;
+.scroll-arrow-button {
+  /* size: 25px;
     position: fixed;
     right: 20px;
     bottom: 115px; */
-    position: absolute;
-    top: 80%;
-    left: 50%;
+  position: absolute;
+  top: 80%;
+  left: 50%;
 }
 .arrow-img {
-    width: 40px;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  width: 40px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
 .scroll-button {
-    /* position: absolute;
+  /* position: absolute;
     top: 75%;
     left: 50%; */
-    justify-content: center;
-    transform: translate(-100%, 0%);
-    -ms-transform: translate(-100%, -100%);
-    /* background-color: #f1f1f1; */
-    background-color: rgba(255, 255, 255, 0.8);
-    font-size: 10px;
-    padding: 12px 20px;
-    border-color: white;
-    border-radius: 5px;
-    text-align: center;
+  justify-content: center;
+  transform: translate(-100%, 0%);
+  -ms-transform: translate(-100%, -100%);
+  /* background-color: #f1f1f1; */
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 10px;
+  padding: 12px 20px;
+  border-color: white;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .scroll-button:focus {
-    outline: 0;
-    box-shadow: 0;
+  outline: 0;
+  box-shadow: 0;
 }
 
-.parallax-placeholder{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30vw;
-    width:  30vw;
-    border-radius: 50%;
-    background-color: rgb(202, 202, 202);
+.parallax-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vw;
+  width: 30vw;
+  border-radius: 50%;
+  background-color: rgb(202, 202, 202);
 }
 
-.relax-cont{
-    /* margin: 0px;
-    padding: 0;
-     */
+
+.center-parallax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.center-parallax{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.parallax-and-playlist {
+  width: 100%;
+}
+
+.song-menu-but {
+  color: white;
+}
+
+.song-menu-link {
+  padding: 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #1b1b1b;
+}
+.contain-song-menu {
+  height: 150vh;
 }

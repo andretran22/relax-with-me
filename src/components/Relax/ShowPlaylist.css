@@ -2,6 +2,11 @@
     border-bottom-width: 1px;
 }
 
+.playlist-display{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .playlist-display-title{
     border-bottom: 2px solid black;
@@ -16,12 +21,6 @@
     /* background-color: #f8f9fa; */
 }
 
-/* .highlightSong:focus, .highlightSong:active{
-    outline: 0px;
-    background-color: rgba(255, 255, 255, 0);
-    color: #d42c2c;
-    z-index: 0;
-} */
 
 .list-group-item-action:focus{
     outline: 0px;

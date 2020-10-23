@@ -21,21 +21,6 @@ import {
 import SongMenu from "../../components/SongMenu/SongMenu";
 
 const Relax = (props) => {
-  const [goUp, setGoUp] = useState(false);
-
-  const toggleButton = () => {
-    if (goUp) {
-      scroll.scrollToTop();
-    } else {
-      scroll.scrollToBottom();
-    }
-    setGoUp(!goUp);
-    console.log(goUp);
-  };
-
-  const scrollDown = () => {
-    scroll.scrollToBottom();
-  }
 
   return (
     // <motion.div
@@ -47,41 +32,43 @@ const Relax = (props) => {
     //   transition={defualtTransition}
     // >
 
-    <Container className="relax-cont">
+    <Container>
       <Row id="top" className="contain">
-        {/* playlist info */}
-        <Playlist
-          playlist={props.playlist}
-          title={props.title}
-          chooseSong={props.chooseSong}
-          highlightSong={props.highlightSong}
-        />
+        <Row className="parallax-and-playlist">
+          {/* playlist info */}
+          <Playlist
+            playlist={props.playlist}
+            title={props.title}
+            chooseSong={props.chooseSong}
+            highlightSong={props.highlightSong}
+          />
 
-        {/* parallax */}
-        <Col xs={6} className="center-parallax">
-          <div className="parallax-placeholder">
-            <h1 className="text-center">Parallax Placeholder</h1>
-          </div>
-        </Col>
+          {/* parallax */}
+          <Col xs={6} className="center-parallax">
+            <div className="parallax-placeholder">
+              <h1 className="text-center">Parallax Placeholder</h1>
+            </div>
+          </Col>
 
-        {/* menu scroll button 
-        <Button className="scroll-button" variant="dark" onClick={toggleButton}>
-          {goUp ? "Go Back Up" : "Go to Song Menu"}
-        </Button>
-        */}
-
-        {/* spacer */}
-        <Col xs={3}></Col>
-
-        {/* menu scroll button */}
-        <div class="scroll-arrow-button">
-          <img src="down-arrow.png" alt="arrow" class="arrow-img"></img>
-          <button class="scroll-button" onClick={scrollDown}></button>
-        </div>
+          {/* song menu button  */}
+          <Col xs={3} className="center-parallax">
+            <Row className="song-menu-but">
+              <Link
+                to="bot"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="song-menu-link"
+              >
+                Song Menu
+              </Link>
+            </Row>
+          </Col>
+        </Row>
       </Row>
 
       {/* song menu section */}
-      <Row id="bot" className="contain">
+      <Row id="bot" className="contain-song-menu">
         <SongMenu
           handleSetPlaylist={props.setPlaylist}
           currentSoundState={props.soundStates}
@@ -89,7 +76,7 @@ const Relax = (props) => {
         />
       </Row>
     </Container>
-      // </motion.div>
+    // </motion.div>
   );
 };
 

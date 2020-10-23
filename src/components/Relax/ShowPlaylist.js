@@ -21,7 +21,7 @@ const ShowPlaylist = (props) => {
   }, [props.highlightSong]);
 
   const getListGroupItem = (dict, index) => {
-      console.log(h)
+    console.log(h);
     return (
       <ListGroup.Item
         action
@@ -48,9 +48,12 @@ const ShowPlaylist = (props) => {
 
   return (
     <Col xs={3} className="playlist-display">
-      <Row className="playlist-display-title">
-        <h2>{title == null ? "Select a Playlist" : title}</h2>
-      </Row>
+      {title == null ? null : (
+        <Row className="playlist-display-title">
+          <h2>{title == null ? "" : title}</h2>
+        </Row>
+      )}
+
       <Row>{playlist == null ? null : constructListGroup()}</Row>
     </Col>
   );

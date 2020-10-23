@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import { Router, Switch, Route, useLocation } from "react-router-dom";
-import history from "./history";
-import { AnimatePresence } from "framer-motion";
+
+import { Link, animateScroll as scroll } from "react-scroll";
+
+// import history from "./history";
+// import { AnimatePresence } from "framer-motion";
 
 //Players
 import MainPlayer from "../MainPlayer/MainPlayer";
 import SoundPlayer from "../MainPlayer/MainSoundPlayers";
+
+//boostrap
+import Button from "react-bootstrap/Button";
 
 // Page components
 import Home from "../Home/Home";
@@ -28,7 +34,7 @@ function App() {
 
   let location = useLocation();
   let key = location.pathname;
-  let hideToolBar = key === "/song-menu";
+  let hideButton = key !== "/relax";
 
   useEffect(() => {
     let initialSoundStates = sounds.map((soundDict) => {
@@ -44,6 +50,10 @@ function App() {
     });
     setSoundStates(initialSoundStates);
   }, []);
+
+  const scrollTop = () => {
+    scroll.scrollToTop();
+  };
 
   // handler for sound card state changes
   const handleChangeState = (key, newDict) => {
@@ -61,39 +71,53 @@ function App() {
   };
 
   const highlightSong = (h) => {
-    console.log(h)
-    setHighlight(h)
-  }
+    console.log(h);
+    setHighlight(h);
+  };
 
   return (
-    <div className="full-height">
+    <div id="top" className="full-height">
+
       {/* Toolbar */}
-      {hideToolBar ? null : <Toolbar />}
+      <Toolbar />
+
+      {/* scroll to top button */}
+      {hideButton ? null : (
+        <div className="invisible-div">
+          <Row className="go-back-but">
+            <Link
+              to="top"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className="song-menu-link"
+            >
+              Go Back Up
+            </Link>
+          </Row>
+        </div>
+      )}
 
       {/* pages/routes */}
-      {/* <main className="main-page"> */}
-      {/* <AnimatePresence> */}
-        <Switch location={location} key={key}>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route
-            path="/relax"
-            render={(props) => (
-              <Relax
-                {...props}
-                setPlaylist={handleSetPlaylist}
-                soundStates={soundStates}
-                playlist={playlistData}
-                title={playlistTitle}
-                handleChangeState={handleChangeState}
-                chooseSong={setSongIndex}
-                highlightSong={highlight}
-              />
-            )}
-          />
-        </Switch>
-      {/* </AnimatePresence> */}
-      {/* </main> */}
+      <Switch location={location} key={key}>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route
+          path="/relax"
+          render={(props) => (
+            <Relax
+              {...props}
+              setPlaylist={handleSetPlaylist}
+              soundStates={soundStates}
+              playlist={playlistData}
+              title={playlistTitle}
+              handleChangeState={handleChangeState}
+              chooseSong={setSongIndex}
+              highlightSong={highlight}
+            />
+          )}
+        />
+      </Switch>
 
       {/* footer with main media player */}
       <Row className="main-playlist-player">
