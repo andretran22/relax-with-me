@@ -33,6 +33,10 @@ const Relax = (props) => {
     console.log(goUp);
   };
 
+  const scrollDown = () => {
+    scroll.scrollToBottom();
+  }
+
   return (
     // <motion.div
     //   style={styleAbsolute}
@@ -60,13 +64,20 @@ const Relax = (props) => {
           </div>
         </Col>
 
-        {/* menu scroll button */}
+        {/* menu scroll button 
         <Button className="scroll-button" variant="dark" onClick={toggleButton}>
           {goUp ? "Go Back Up" : "Go to Song Menu"}
         </Button>
+        */}
 
         {/* spacer */}
         <Col xs={3}></Col>
+
+        {/* menu scroll button */}
+        <div class="scroll-arrow-button">
+          <img src="down-arrow.png" alt="arrow" class="arrow-img"></img>
+          <button class="scroll-button" onClick={scrollDown}></button>
+        </div>
       </Row>
 
       {/* song menu section */}
