@@ -48,12 +48,16 @@ const SoundCard = (props) => {
     props.handleChangeState(key, newDict);
   };
 
+  const getStyle = () => {
+    return play ? "playlist-active" : "playlist-card"
+  }
+
   return (
     <Col className="playlist-contain" xs={2}>
       <Row className="sound-group">
         {/* card image */}
-        <div className="playlist-card" onClick={handlePlayPause}></div>
-        <br />
+        <div className={getStyle()} onClick={handlePlayPause}></div>
+        <br/>
 
         {/* slider */}
         {play ? (

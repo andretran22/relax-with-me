@@ -92,7 +92,7 @@ const MainPlayer = (props) => {
   };
 
   const getSongName = () => {
-    if (playlistData == null) {
+    if (playlistData == null || playlistData == undefined ) {
       return null;
     }
     let currentSong = playlistData["default"][songIndex];

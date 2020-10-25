@@ -18,23 +18,29 @@ const PlaylistCard = (props) => {
   }, [props.title]);
 
   const getSongImports = (playlistName, playlistData) => {
-    // console.log(playlistName);
-
     let songsData = playlistData["default"];
+
     let songImports = songsData.map((songDict) => {
       let songName = songDict["pathSuffix"];
       return require("../../assets/" + playlistName + "/" + songName);
     });
 
-    // console.log(songImports);
     return songImports;
-  }
+  };
 
+  const handleClick = () => {
+      props.setPlaylist(songImports, songData, title);
+      props.setActive(props.id);
+  };
+
+  const getStyle = () => {
+    return props.id == props.activeID ? "playlist-active" : "playlist-card";
+  };
 
   return (
     <Col className="playlist-contain" xs={2}>
-      <Row onClick={() => props.setPlaylist(songImports, songData, title)}>
-        <div className="playlist-card"></div>
+      <Row onClick={handleClick}>
+        <div className={getStyle()}></div>
       </Row>
       <br />
       <Row className="playlist-title">{title}</Row>

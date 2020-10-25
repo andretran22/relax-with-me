@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SongMenu.css";
 
 // Boostrap
@@ -13,22 +13,26 @@ import SoundCard from "../SoundCard/SoundCard";
 const playlistLibrary = ["Chillax", "Dreams"];
 
 const SongMenu = (props) => {
+  const [activeID, setActiveID] = useState(-1);
+
   let currentSoundState = props.currentSoundState;
-  // console.log(currentSoundState);
+
 
   const makePlaylistCards = (library) => {
     return library.map((playlistTitle, index) => (
       <PlaylistCard
         title={playlistTitle}
+        id={index}
         key={index}
         setPlaylist={props.handleSetPlaylist}
+        setActive={setActiveID}
+        activeID={activeID}
       />
     ));
   };
 
   const makeSoundCards = (library) => {
     return library.map((soundDict, index) => {
-        // console.log(soundDict);
         return (
           <SoundCard
             key={index}

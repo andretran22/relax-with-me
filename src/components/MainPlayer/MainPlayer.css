@@ -1,6 +1,4 @@
 .media-controls{
-    /* flex-direction: column; */
-    /* align-items: center; */
     justify-content: center;
     margin-bottom: 0.5rem;
 }
@@ -10,8 +8,6 @@
 }
 
 .media-button{
-    /* align-items: center; */
-    /* height: 30px; */
     font-size: small;
     margin-right: 5px;
     margin-left: 5px;

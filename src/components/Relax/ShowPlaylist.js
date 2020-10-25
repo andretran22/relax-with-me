@@ -12,7 +12,6 @@ const ShowPlaylist = (props) => {
 
   //select song from list
   const selectSong = (e) => {
-    console.log("***SHOW: " + e.target.value + "*****");
     props.chooseSong(e.target.value);
   };
 
@@ -21,7 +20,6 @@ const ShowPlaylist = (props) => {
   }, [props.highlightSong]);
 
   const getListGroupItem = (dict, index) => {
-    console.log(h);
     return (
       <ListGroup.Item
         action
