@@ -40,6 +40,7 @@ const SoundCard = (props) => {
       import: soundImport,
       image: image
     };
+    // console.log(newDict)
     props.handleChangeState(key, newDict);
   };
 

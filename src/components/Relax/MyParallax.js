@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import Image from "react-bootstrap/Image";
 import "./MyParallax.css";
@@ -15,6 +15,11 @@ const MyParallax = (my_props) => {
     xy: [0, 0],
     config: { mass: 10, tension: 300, friction: 50 },
   }));
+
+  useEffect(() => {
+    console.log(my_props.parallaxSounds)
+  },[my_props.updateParallax]);
+
   return (
     <div
       className="parallax-container"

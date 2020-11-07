@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./Relax.css";
 
@@ -20,9 +20,12 @@ import {
 //song menu
 import SongMenu from "../../components/SongMenu/SongMenu";
 import MyParallax from "./MyParallax";
+import userEvent from "@testing-library/user-event";
 
 const Relax = (props) => {
   const [playlistImage, setPlaylistImage] = useState(null);
+  const [parallaxSounds, setParallaxSounds] = useState(null);
+  const [updateParallax, setUpdateParallax] = useState(false);
 
   const songMenuButton = () => {
     return (
@@ -39,6 +42,11 @@ const Relax = (props) => {
         </Row>
     );
   };
+
+  useEffect(()=>{
+    setParallaxSounds(props.soundStates);
+    setUpdateParallax(props.flip);
+  }, [props.soundStates, props.flip]);
 
   return (
     // <motion.div
@@ -65,7 +73,12 @@ const Relax = (props) => {
 
             {/* parallax */}
             <Col xs={6} className="center-parallax">
-              <MyParallax playlistImage={playlistImage} />
+              <MyParallax 
+                playlistImage={playlistImage} 
+                parallaxSounds={parallaxSounds}
+                updateParallax={updateParallax}
+              />
+
             </Col>
 
             {/* song menu button  */}

@@ -52,9 +52,10 @@ function App() {
 
   // handler for sound card state changes
   const handleChangeState = (key, newDict) => {
-    let copy = soundStates;
-    copy[key] = newDict;
-    setSoundStates(copy);
+
+    soundStates.splice(key, 1, newDict);
+
+    setSoundStates(soundStates)
     setFlip(!flip);
   };
 
@@ -110,6 +111,7 @@ function App() {
               handleChangeState={handleChangeState}
               chooseSong={setSongIndex}
               highlightSong={highlight}
+              flip={flip}
             />
           )}
         />

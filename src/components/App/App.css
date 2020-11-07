@@ -45,7 +45,8 @@
 .invisible-div {
   position: absolute;
   top: 100vh;
-  width: 100%;
+  /* width: 100%; */
+  width: 97%;
   height: 100%;
   color: white;
   /* overflow-x: hidden; */
@@ -55,6 +56,7 @@
   position: sticky;
   top: 100px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-end;
   z-index: 30;
 }
