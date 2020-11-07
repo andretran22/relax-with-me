@@ -4,16 +4,23 @@ import "./SoundCard.css";
 // Boostrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 
 const SoundCard = (props) => {
   const [play, setPlay] = useState(props.playing);
   const [volume, setVolume] = useState(props.volume);
+  const [image, setImage] = useState(null);
 
   let soundDict = props.soundDict;
 
   let title = soundDict["name"];
   let soundImport = soundDict["import"];
   let key = props.index;
+
+  useEffect(() => {
+    let soundArt = soundDict["image"];
+    setImage(soundArt);
+  }, []);
 
   useEffect(() => {
     setPlay(props.playing);
@@ -31,6 +38,7 @@ const SoundCard = (props) => {
       playing: !play,
       volume: volume,
       import: soundImport,
+      image: image
     };
     props.handleChangeState(key, newDict);
   };
@@ -49,31 +57,34 @@ const SoundCard = (props) => {
   };
 
   const getStyle = () => {
-    return play ? "playlist-active" : "playlist-card"
-  }
+    return play ? "playlist-active" : "playlist-card";
+  };
+
 
   return (
-    <Col className="playlist-contain" xs={2}>
-      <Row className="sound-group">
-        {/* card image */}
-        <div className={getStyle()} onClick={handlePlayPause}></div>
-        <br/>
-
-        {/* slider */}
-        {play ? (
-          <input
-            className="slider"
-            type="range"
-            min={0}
-            max={1}
-            step="any"
-            value={volume}
-            onChange={handleVolumeChange}
-          />
-        ) : (
-          <div className="placeholder" />
-        )}
+    <Col className="playlist-contain" xs={4}>
+      <Row onClick={handlePlayPause}>
+        <div className={getStyle()}>
+          <div className="image-cropper">
+            <Image className="sound-img" src={image} />
+          </div>
+        </div>
       </Row>
+
+      {/* slider */}
+      {play ? (
+        <input
+          className="slider"
+          type="range"
+          min={0}
+          max={1}
+          step="any"
+          value={volume}
+          onChange={handleVolumeChange}
+        />
+      ) : (
+        <div className="placeholder" />
+      )}
       <br />
 
       <Row className="playlist-title">{title}</Row>

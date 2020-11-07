@@ -18,7 +18,7 @@
 }
 
 .volume-slider{
-    padding: 2rem;
+    /* padding: 2rem; */
 }
 
 .center-cols{
@@ -31,4 +31,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.vol-slide{
+    max-width: 150px;
+    min-width: 50px;
 }

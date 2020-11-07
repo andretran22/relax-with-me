@@ -17,7 +17,6 @@ const SongMenu = (props) => {
 
   let currentSoundState = props.currentSoundState;
 
-
   const makePlaylistCards = (library) => {
     return library.map((playlistTitle, index) => (
       <PlaylistCard
@@ -27,6 +26,7 @@ const SongMenu = (props) => {
         setPlaylist={props.handleSetPlaylist}
         setActive={setActiveID}
         activeID={activeID}
+        setPlaylistImage={props.setPlaylistImage}
       />
     ));
   };

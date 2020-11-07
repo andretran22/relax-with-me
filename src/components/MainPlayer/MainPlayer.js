@@ -183,7 +183,7 @@ const MainPlayer = (props) => {
       {/* volume */}
       <Col xs={2} className="center-cols volume-slider">
         <input
-          className="slider"
+          className="slider vol-slide"
           type="range"
           min={0}
           max={1}

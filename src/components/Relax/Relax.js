@@ -22,6 +22,23 @@ import SongMenu from "../../components/SongMenu/SongMenu";
 import MyParallax from "./MyParallax";
 
 const Relax = (props) => {
+  const [playlistImage, setPlaylistImage] = useState(null);
+
+  const songMenuButton = () => {
+    return (
+        <Row className="song-menu-but">
+          <Link
+            to="bot"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="song-menu-link"
+          >
+            Song Menu
+          </Link>
+        </Row>
+    );
+  };
 
   return (
     // <motion.div
@@ -35,38 +52,31 @@ const Relax = (props) => {
 
     <Container>
       <Row id="top" className="contain">
-        <Row className="parallax-and-playlist">
-          {/* playlist info */}
-          <Playlist
-            playlist={props.playlist}
-            title={props.title}
-            chooseSong={props.chooseSong}
-            highlightSong={props.highlightSong}
-          />
+        {props.playlist != null ? (
 
-          {/* parallax */}
-          <Col xs={6} className="center-parallax">
-            {/* <div className="parallax-placeholder"> */}
-              <MyParallax />
-              {/* <h1 className="text-center">Parallax Placeholder</h1> */}
-            {/* </div> */}
-          </Col>
+          <Row className="parallax-and-playlist">
+            {/* playlist info */}
+            <Playlist
+              playlist={props.playlist}
+              title={props.title}
+              chooseSong={props.chooseSong}
+              highlightSong={props.highlightSong}
+            />
 
-          {/* song menu button  */}
-          <Col xs={3} className="center-parallax">
-            <Row className="song-menu-but">
-              <Link
-                to="bot"
-                spy={true}
-                smooth={true}
-                duration={500}
-                className="song-menu-link"
-              >
-                Song Menu
-              </Link>
-            </Row>
-          </Col>
-        </Row>
+            {/* parallax */}
+            <Col xs={6} className="center-parallax">
+              <MyParallax playlistImage={playlistImage} />
+            </Col>
+
+            {/* song menu button  */}
+            <Col xs={3} className="center-parallax">
+              {songMenuButton()}
+            </Col>
+          </Row>
+
+        ) : (
+            songMenuButton()
+        )}
       </Row>
 
       {/* song menu section */}
@@ -75,6 +85,7 @@ const Relax = (props) => {
           handleSetPlaylist={props.setPlaylist}
           currentSoundState={props.soundStates}
           handleChangeState={props.handleChangeState}
+          setPlaylistImage={setPlaylistImage}
         />
       </Row>
     </Container>

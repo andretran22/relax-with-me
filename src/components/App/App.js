@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
-import { Router, Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 // import history from "./history";
 // import { AnimatePresence } from "framer-motion";
@@ -11,11 +11,8 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import MainPlayer from "../MainPlayer/MainPlayer";
 import SoundPlayer from "../MainPlayer/MainSoundPlayers";
 
-//boostrap
-import Button from "react-bootstrap/Button";
-
 // Page components
-import Home from "../Home/Home";
+// import Home from "../Home/Home";
 import Relax from "../Relax/Relax";
 import About from "../About/About";
 import Toolbar from "../Navbar/Navbar";
@@ -34,26 +31,24 @@ function App() {
 
   let location = useLocation();
   let key = location.pathname;
-  let hideButton = key !== "/relax";
+  let hideButton = key !== "/";
+  // let hideButton = key !== "/relax";
 
   useEffect(() => {
     let initialSoundStates = sounds.map((soundDict) => {
-      let soundImport = require("../../assets/Sounds/" +
-        soundDict["pathSuffix"]);
+      let soundImport = require("../../assets/Sounds/" + soundDict["pathSuffix"]);
+      let soundImage = require("../../assets/SoundArt/" + soundDict["imageFile"]);
       let state = {
         name: soundDict["name"],
         playing: false,
         volume: 0.5,
         import: soundImport,
+        image: soundImage
       };
       return state;
     });
     setSoundStates(initialSoundStates);
   }, []);
-
-  const scrollTop = () => {
-    scroll.scrollToTop();
-  };
 
   // handler for sound card state changes
   const handleChangeState = (key, newDict) => {
@@ -100,10 +95,11 @@ function App() {
 
       {/* pages/routes */}
       <Switch location={location} key={key}>
-        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/" component={Home} /> */}
         <Route path="/about" component={About} />
         <Route
-          path="/relax"
+          // path="/relax"
+          path="/"
           render={(props) => (
             <Relax
               {...props}
