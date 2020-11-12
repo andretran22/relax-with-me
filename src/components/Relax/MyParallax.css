@@ -1,5 +1,5 @@
 
-.card1,
+.main-parallax-card,
 .card2,
 .card3,
 .card4 {
@@ -11,7 +11,7 @@
   will-change: transform;
 }
 
-.card1 {
+.main-parallax-card {
   width: 30vw;
   height: 30vw;
   /* width: 45vw;
@@ -20,20 +20,9 @@
   max-height: 100ch; */
 }
 
-.card2 {
-  width: 25ch;
-  height: 25ch;
-}
-
-.card3 {
-  opacity: 0.9;
-  width: 25ch;
-  height: 25ch;
-}
-
-.card4 {
-  width: 25ch;
-  height: 25ch;
+.card1 {
+  max-width: 15vw;
+  max-height: 15vw;
 }
 
 .parallax-container {

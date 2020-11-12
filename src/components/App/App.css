@@ -1,28 +1,7 @@
 .full-height {
   height: 100%;
-  /* overflow-y: scroll; */
-  /* display: flex; */
 }
 
-.main-page {
-  /* position: relative; */
-
-  /* display: flex;
-  justify-content: center;
-  width: 100%; */
-  /* 
-  overflow-y: scroll;
- 
-  
-  /* height: calc(100vh - 100px - 60px); */
-  /* height: 100vh; */
-
-  /* height: 100vh; */
-  /* width: 100%;  */
-  /* overflow-x: hidden;  */
-  /* overflow-y: hidden; */
-  /* align-items: center; */
-}
 
 .main-playlist-player {
   justify-content: center;
@@ -45,11 +24,9 @@
 .invisible-div {
   position: absolute;
   top: 100vh;
-  /* width: 100%; */
   width: 97%;
-  height: 100%;
+  min-height: 70%;
   color: white;
-  /* overflow-x: hidden; */
 }
 
 .go-back-but {

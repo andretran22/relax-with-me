@@ -1,49 +1,91 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import Image from "react-bootstrap/Image";
 import "./MyParallax.css";
 
+
 const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
-const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
-const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`;
-const trans3 = (x, y) => `translate3d(${x / 6 - 250}px,${y / 6 - 200}px,0)`;
-const trans4 = (x, y) => `translate3d(${x / 3.5}px,${y / 3.5}px,0)`;
+const trans0 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
+
+
+const trans1 = (x, y) => `translate3d(${x / 5 }px, ${y / 4}px, 0)`;
+const trans2 = (x, y) => `translate3d(${x / 4 - 70}px, ${y / 5 - 130}px, 0)`;
+const trans3 = (x, y) => `translate3d(${x / 5 - 20}px, ${y / 4 - 180}px, 0)`;
+const trans4 = (x, y) => `translate3d(${x / 4 + 20}px, ${y / 5 - 180}px, 0)`;
+const trans5 = (x, y) => `translate3d(${x / 5 + 70}px, ${y / 4 - 130}px, 0)`;
+const trans6 = (x, y) => `translate3d(${x / 4 }px, ${y / 5}px, 0)`;
+
+const trans7 = (x, y) => `translate3d(${x / 5 }px, ${y / 4 + 20}px, 0)`;
+const trans8  = (x, y) => `translate3d(${x / 4 - 70}px, ${y / 5 + 150}px, 0)`;
+const trans9  = (x, y) => `translate3d(${x / 5 - 20}px, ${y / 4 + 200}px, 0)`;
+const trans10 = (x, y) => `translate3d(${x / 4 + 20}px, ${y / 5 + 200}px, 0)`;
+const trans11 = (x, y) => `translate3d(${x / 5 + 70}px, ${y / 4 + 150}px, 0)`;
+const trans12 = (x, y) => `translate3d(${x / 4 }px, ${y / 5 + 20}px, 0)`;
+
+const transFunctions = [
+  trans1,
+  trans2,
+  trans3,
+  trans4,
+  trans5,
+  trans6,
+  trans7,
+  trans8,
+  trans9,
+  trans10,
+  trans11,
+  trans12
+];
 
 const MyParallax = (my_props) => {
-
   const [props, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 10, tension: 300, friction: 50 },
   }));
 
+  const [soundState, setSoundState] = useState([]);
+
   useEffect(() => {
-    console.log(my_props.parallaxSounds)
-  },[my_props.updateParallax]);
+    setSoundState([...my_props.parallaxSounds]);
+    
+  }, [my_props.updateParallax]);
+
+  const makeSoundParallax = (sounds) => {
+    // console.log("hello")
+    console.log(sounds[0])
+    return sounds.map((soundDict, index) => {
+      
+      if (soundDict["playing"]) {
+        return (
+          <animated.div
+            key={index}
+            className="card1"
+            style={{ transform: props.xy.interpolate(transFunctions[index]) }}
+          >
+            <Image src={soundDict["image"]} fluid />
+          </animated.div>
+        );
+      }
+    });
+  };
 
   return (
     <div
       className="parallax-container"
       onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}
     >
+
+      {/* playlist background */}
       <animated.div
-        className="card1"
-        style={{ transform: props.xy.interpolate(trans1) }}
+        className="main-parallax-card"
+        style={{ transform: props.xy.interpolate(trans0) }}
       >
         <Image src={my_props.playlistImage} fluid />
       </animated.div>
 
-      {/* <animated.div
-        className="card2"
-        style={{ transform: props.xy.interpolate(trans2) }}
-      />
-      <animated.div
-        className="card3"
-        style={{ transform: props.xy.interpolate(trans3) }}
-      />
-      <animated.div
-        className="card4"
-        style={{ transform: props.xy.interpolate(trans4) }}
-      /> */}
+      {/* sound images */}
+      {makeSoundParallax(soundState)}
+
     </div>
   );
 };

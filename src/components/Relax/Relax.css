@@ -1,5 +1,5 @@
 .contain {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,5 +39,5 @@
   background-color: #1b1b1b;
 }
 .contain-song-menu {
-  height: 150vh;
+  min-height: 150vh;
 }

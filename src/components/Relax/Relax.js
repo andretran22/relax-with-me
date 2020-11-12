@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import "./Relax.css";
 
 //boostrap
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Playlist from "./ShowPlaylist";
 
 // animate
-import { motion } from "framer-motion";
-import {
-  defaultVariant,
-  defualtTransition,
-  styleAbsolute,
-} from "../FramerContants";
 
 //song menu
 import SongMenu from "../../components/SongMenu/SongMenu";
 import MyParallax from "./MyParallax";
-import userEvent from "@testing-library/user-event";
 
 const Relax = (props) => {
   const [playlistImage, setPlaylistImage] = useState(null);
@@ -49,15 +41,6 @@ const Relax = (props) => {
   }, [props.soundStates, props.flip]);
 
   return (
-    // <motion.div
-    //   style={styleAbsolute}
-    //   initial="initial"
-    //   animate="in"
-    //   exit="out"
-    //   variants={defaultVariant}
-    //   transition={defualtTransition}
-    // >
-
     <Container>
       <Row id="top" className="contain">
         {props.playlist != null ? (
@@ -102,7 +85,6 @@ const Relax = (props) => {
         />
       </Row>
     </Container>
-    // </motion.div>
   );
 };
 

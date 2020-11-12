@@ -4,20 +4,17 @@ import { Switch, Route, useLocation } from "react-router-dom";
 
 import { Link } from "react-scroll";
 
-// import history from "./history";
-// import { AnimatePresence } from "framer-motion";
-
 //Players
 import MainPlayer from "../MainPlayer/MainPlayer";
 import SoundPlayer from "../MainPlayer/MainSoundPlayers";
 
 // Page components
-// import Home from "../Home/Home";
 import Relax from "../Relax/Relax";
 import About from "../About/About";
 import Toolbar from "../Navbar/Navbar";
 import "./App.css";
 
+// All Sounds Info
 import sounds from "../Sounds/Sounds";
 
 function App() {
@@ -32,7 +29,6 @@ function App() {
   let location = useLocation();
   let key = location.pathname;
   let hideButton = key !== "/";
-  // let hideButton = key !== "/relax";
 
   useEffect(() => {
     let initialSoundStates = sounds.map((soundDict) => {
@@ -52,7 +48,6 @@ function App() {
 
   // handler for sound card state changes
   const handleChangeState = (key, newDict) => {
-
     soundStates.splice(key, 1, newDict);
 
     setSoundStates(soundStates)
@@ -72,7 +67,7 @@ function App() {
   };
 
   return (
-    <div id="top" className="full-height">
+    <div className="App">
 
       {/* Toolbar */}
       <Toolbar />

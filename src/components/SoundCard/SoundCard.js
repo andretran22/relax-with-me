@@ -53,6 +53,7 @@ const SoundCard = (props) => {
       playing: play,
       volume: value,
       import: soundImport,
+      image: image
     };
     props.handleChangeState(key, newDict);
   };
@@ -71,11 +72,12 @@ const SoundCard = (props) => {
           </div>
         </div>
       </Row>
-
+      <br/>
+      
       {/* slider */}
       {play ? (
         <input
-          className="slider"
+          className="slider slider-sounds"
           type="range"
           min={0}
           max={1}
@@ -83,6 +85,7 @@ const SoundCard = (props) => {
           value={volume}
           onChange={handleVolumeChange}
         />
+      
       ) : (
         <div className="placeholder" />
       )}
