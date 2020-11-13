@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import PlaylistCard from "../PlaylistCard/PlaylistCard";
 import SoundCard from "../SoundCard/SoundCard";
 
-const playlistLibrary = ["Chillax", "Dreams"];
+const playlistLibrary = ["Chillax", "Dreams", "Date", "Dance"];
 
 const SongMenu = (props) => {
   const [activeID, setActiveID] = useState(-1);

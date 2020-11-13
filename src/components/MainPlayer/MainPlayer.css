@@ -39,11 +39,11 @@
 }
 
 .text-resize {
-  font-size: 1.6vw;
+  font-size: clamp(13px, 1.2vw, 20px);
 }
 
 .text-resize2 {
-  font-size: 2vw;
+  font-size: clamp(14px, 1.6vw, 25px);
 }
 
 

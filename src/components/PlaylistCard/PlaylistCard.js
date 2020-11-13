@@ -54,8 +54,9 @@ const PlaylistCard = (props) => {
           </div>
         </div>
       </Row>
+      <Row className="playlist-title mt-2 mb-2">{title}</Row>
       <br />
-      <Row className="playlist-title">{title}</Row>
+      
     </Col>
   );
 };
