@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation , Redirect} from "react-router-dom";
 
 import { Link } from "react-scroll";
 
@@ -28,7 +28,7 @@ function App() {
 
   let location = useLocation();
   let key = location.pathname;
-  let hideButton = key !== "/relax";
+  let hideButton = key !== "/";
 
   useEffect(() => {
     let initialSoundStates = sounds.map((soundDict) => {
@@ -93,7 +93,7 @@ function App() {
       <Switch location={location} key={key}>
         <Route path="/about" component={About} />
         <Route
-          path="/relax"
+          path="/"
           render={(props) => (
             <Relax
               {...props}
