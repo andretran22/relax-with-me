@@ -104,8 +104,8 @@ const About = () => {
             {/* Paragraph 1 */}
             <Row className="inherit-pad">
               <p>
-                Relax to the musical stylings of the talented &nbsp;
-                <a href="https://louiezong.bandcamp.com/">Louie Zong</a>. Create
+                Relax to the musical stylings of the talented
+                <a href="https://louiezong.bandcamp.com/"> Louie Zong</a>. Create
                 your own personal soundscape using a selection of calm sounds
                 along with any of the curated playlists. See what you can
                 create!
@@ -116,13 +116,13 @@ const About = () => {
             {/* Paragraph 2 */}
             <Row className="inherit-pad"> 
               <p>
-                This project was done by &nbsp;
-                <a href="https://www.linkedin.com/in/andretran22/">Andre Tran &nbsp;</a>
+                This project was done by
+                <a href="https://www.linkedin.com/in/andretran22/"> Andre Tran </a> 
                 in association with The University of Texas' Bridging
-                Disciplines Program for the &nbsp;
-                <a href="https://ugs.utexas.edu/bdp/programs/dam">Digital Art and Media &nbsp;</a>
-                certificate under the creative mentorship of Professor &nbsp;
-                <a href="https://rtf.utexas.edu/faculty/ben-bays">Ben Bays</a>.
+                Disciplines Program for the
+                <a href="https://ugs.utexas.edu/bdp/programs/dam"> Digital Art and Media </a> 
+                certificate under the creative mentorship of Professor
+                <a href="https://rtf.utexas.edu/faculty/ben-bays"> Ben Bays</a>.
               </p>
             </Row>
             <br />
@@ -134,6 +134,15 @@ const About = () => {
                 Programs for giving me the opportunity to create this site. This
                 was my first project combining code, art, and music to create a
                 place anyone can relax and unwind. I hope you enjoy!
+              </p>
+            </Row>
+            <br/>
+
+            {/* Paragraph 4*/}
+            <Row className="inherit-pad">
+              <p>
+                Feel free to take a look at my source code and other projects on 
+                <a href="https://github.com/andretran22/relax-with-me"> Github</a>.
               </p>
             </Row>
           </Col>
