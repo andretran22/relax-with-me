@@ -28,7 +28,7 @@ function App() {
 
   let location = useLocation();
   let key = location.pathname;
-  let hideButton = key !== "/";
+  let hideButton = key !== "/relax";
 
   useEffect(() => {
     let initialSoundStates = sounds.map((soundDict) => {
@@ -91,11 +91,9 @@ function App() {
 
       {/* pages/routes */}
       <Switch location={location} key={key}>
-        {/* <Route exact path="/" component={Home} /> */}
         <Route path="/about" component={About} />
         <Route
-          // path="/relax"
-          path="/"
+          path="/relax"
           render={(props) => (
             <Relax
               {...props}

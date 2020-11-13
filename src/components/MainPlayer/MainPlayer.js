@@ -98,8 +98,8 @@ const MainPlayer = (props) => {
     let currentSong = playlistData["default"][songIndex];
     return (
       <>
-        <h5>{currentSong["title"]}</h5>
-        <p className="m-0">{currentSong["album"]}</p>
+        <h5 className="text-resize2">{currentSong["title"]}</h5>
+        <p className="m-0 text-resize">{currentSong["album"]}</p>
       </>
     );
   };

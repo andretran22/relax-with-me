@@ -72,8 +72,9 @@ const SoundCard = (props) => {
           </div>
         </div>
       </Row>
-      <br/>
-      
+
+      <Row className="playlist-title mb-2 mt-2">{title}</Row>
+
       {/* slider */}
       {play ? (
         <input
@@ -91,7 +92,7 @@ const SoundCard = (props) => {
       )}
       <br />
 
-      <Row className="playlist-title">{title}</Row>
+      
     </Col>
   );
 };
