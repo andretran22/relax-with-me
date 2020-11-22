@@ -36,8 +36,8 @@ const PlaylistCard = (props) => {
   };
 
   const handleClick = () => {
-      props.setPlaylist(songImports, songData, title);
-      props.setPlaylistImage(image)
+      props.setPlaylist(songImports, songData, title, image);
+      // props.setPlaylistImage(image)
       props.setActive(props.id);
   };
 

@@ -8,14 +8,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Playlist from "./ShowPlaylist";
 
-// animate
-
 //song menu
 import SongMenu from "../../components/SongMenu/SongMenu";
 import MyParallax from "./MyParallax";
 
 const Relax = (props) => {
-  const [playlistImage, setPlaylistImage] = useState(null);
   const [parallaxSounds, setParallaxSounds] = useState(null);
   const [updateParallax, setUpdateParallax] = useState(false);
 
@@ -40,6 +37,7 @@ const Relax = (props) => {
     setUpdateParallax(props.flip);
   }, [props.soundStates, props.flip]);
 
+
   return (
     <Container>
       <Row id="top" className="contain">
@@ -57,7 +55,7 @@ const Relax = (props) => {
             {/* parallax */}
             <Col xs={6} className="center-parallax">
               <MyParallax 
-                playlistImage={playlistImage} 
+                playlistImage={props.image} 
                 parallaxSounds={parallaxSounds}
                 updateParallax={updateParallax}
               />
@@ -81,7 +79,8 @@ const Relax = (props) => {
           handleSetPlaylist={props.setPlaylist}
           currentSoundState={props.soundStates}
           handleChangeState={props.handleChangeState}
-          setPlaylistImage={setPlaylistImage}
+          setActiveID={props.setActiveID}
+          activeID={props.activeID}
         />
       </Row>
     </Container>

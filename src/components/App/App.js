@@ -21,6 +21,8 @@ function App() {
   const [playlist, setPlaylist] = useState(null);
   const [playlistData, setPlaylistData] = useState(null);
   const [playlistTitle, setPlaylistTitle] = useState(null);
+  const [playlistImage, setPlaylistImage] = useState(null);  
+  const [activeID, setActiveID] = useState(-1);
   const [soundStates, setSoundStates] = useState([]);
   const [songIndex, setSongIndex] = useState(0);
   const [highlight, setHighlight] = useState(0);
@@ -49,16 +51,16 @@ function App() {
   // handler for sound card state changes
   const handleChangeState = (key, newDict) => {
     soundStates.splice(key, 1, newDict);
-
     setSoundStates(soundStates)
     setFlip(!flip);
   };
 
   // handler when playlist is chosen from Relax.js component
-  const handleSetPlaylist = (songImports, songsData, title) => {
+  const handleSetPlaylist = (songImports, songsData, title, image) => {
     setPlaylist(songImports);
     setPlaylistData(songsData);
     setPlaylistTitle(title);
+    setPlaylistImage(image);
   };
 
   const highlightSong = (h) => {
@@ -101,6 +103,9 @@ function App() {
               soundStates={soundStates}
               playlist={playlistData}
               title={playlistTitle}
+              image={playlistImage}
+              setActiveID={setActiveID}
+              activeID={activeID}
               handleChangeState={handleChangeState}
               chooseSong={setSongIndex}
               highlightSong={highlight}

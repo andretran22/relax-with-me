@@ -11,7 +11,6 @@ import SoundCard from "../SoundCard/SoundCard";
 const playlistLibrary = ["Chillax", "Dreams", "Date", "Dance"];
 
 const SongMenu = (props) => {
-  const [activeID, setActiveID] = useState(-1);
 
   let currentSoundState = props.currentSoundState;
 
@@ -22,9 +21,8 @@ const SongMenu = (props) => {
         id={index}
         key={index}
         setPlaylist={props.handleSetPlaylist}
-        setActive={setActiveID}
-        activeID={activeID}
-        setPlaylistImage={props.setPlaylistImage}
+        setActive={props.setActiveID}
+        activeID={props.activeID}
       />
     ));
   };

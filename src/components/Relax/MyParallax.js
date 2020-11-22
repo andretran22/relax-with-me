@@ -44,11 +44,17 @@ const MyParallax = (my_props) => {
   }));
 
   const [soundState, setSoundState] = useState([]);
+  const [playlistImage, setPlaylistImage] = useState(null);
 
   useEffect(() => {
-    setSoundState([...my_props.parallaxSounds]);
-    
+    if (my_props.parallaxSounds != null){
+      setSoundState([...my_props.parallaxSounds]);
+    }
   }, [my_props.updateParallax]);
+
+  useEffect(()=>{
+    setPlaylistImage(my_props.playlistImage);
+  }, [my_props.playlistImage])
 
   const makeSoundParallax = (sounds) => {
     // console.log("hello")
@@ -80,7 +86,7 @@ const MyParallax = (my_props) => {
         className="main-parallax-card"
         style={{ transform: props.xy.interpolate(trans0) }}
       >
-        <Image src={my_props.playlistImage} fluid />
+        <Image src={playlistImage} fluid />
       </animated.div>
 
       {/* sound images */}
